@@ -39,7 +39,7 @@
 |  6    |  H2az, H3k4me1   | Enhancer |Сигнал сильный, часто вне гена |![Снимок экрана 2022-03-27 в 21 26 23](https://user-images.githubusercontent.com/32986053/160296341-9de3b517-223b-401c-9c6b-8d3fce1dd8ac.png)|
 |  7    | H2az, H3k4me2, H3k4me3, H3k27ac   | Insulator |Часто находится в CPG островках, довольно сильный сигнал, часто находится в интронах |![Снимок экрана 2022-03-27 в 21 18 29](https://user-images.githubusercontent.com/32986053/160296350-8ab8f02f-06f3-42ae-8fd1-c510f16afceb.png)|
 |  8    |  H2az, H3k4me1, H3k4me2, H3k4me3, H3k27ac, H3k79me2  | Active promoter |Высокий сигнал, довольно большой процент в CPG островах, иногда на экзонах |![Снимок экрана 2022-03-27 в 21 41 45](https://user-images.githubusercontent.com/32986053/160296364-4a8dea2c-4829-47a0-9309-eee3e1aedfe1.png)|
-|  9    |  H3k4me1, H3k4me2, H3k4me3, H3k79me2, H4k20me1   | Insulator | |![Снимок экрана 2022-03-27 в 21 17 32](https://user-images.githubusercontent.com/32986053/160296380-35120c1d-310c-42c2-81d9-fd788bb044e9.png)|
-|  10    | H3k79me2    |  | |![Снимок экрана 2022-03-27 в 21 34 15](https://user-images.githubusercontent.com/32986053/160296367-6bd90ff1-2a3a-4402-8a7c-fbf1be341bb6.png)|
+|  9    |  H3k4me1, H3k4me2, H3k4me3, H3k79me2, H4k20me1   | Insulator | Часто перед промотером, сигнал средний, расположен в интронах |![Снимок экрана 2022-03-27 в 21 17 32](https://user-images.githubusercontent.com/32986053/160296380-35120c1d-310c-42c2-81d9-fd788bb044e9.png)|
+|  10    | H3k79me2    | Inactive promoter | Сигнал средний, расположен в интронах  |![Снимок экрана 2022-03-27 в 21 34 15](https://user-images.githubusercontent.com/32986053/160296367-6bd90ff1-2a3a-4402-8a7c-fbf1be341bb6.png)|
 
 
