@@ -42,4 +42,44 @@
 |  9    |  H3k4me1, H3k4me2, H3k4me3, H3k79me2, H4k20me1   | Insulator | Часто перед промотером, сигнал средний, расположен в интронах |![Снимок экрана 2022-03-27 в 21 17 32](https://user-images.githubusercontent.com/32986053/160296380-35120c1d-310c-42c2-81d9-fd788bb044e9.png)|
 |  10    | H3k79me2    | Inactive promoter | Сигнал средний, расположен в интронах  |![Снимок экрана 2022-03-27 в 21 34 15](https://user-images.githubusercontent.com/32986053/160296367-6bd90ff1-2a3a-4402-8a7c-fbf1be341bb6.png)|
 
+##  Команды из колаба
+```
+!curl -O https://raw.githubusercontent.com/deepjavalibrary/d2l-java/master/tools/fix-colab-gpu.sh && bash fix-colab-gpu.sh
+!curl -O https://raw.githubusercontent.com/deepjavalibrary/d2l-java/master/tools/colab_build.sh && bash colab_build.sh
+!java --list-modules | grep "jdk.jshell"
+! wget http://compbio.mit.edu/ChromHMM/ChromHMM.zip
+!unzip /content/ChromHMM.zip
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H2azStdAlnRep1.bam -O H2az.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H3k27acStdAlnRep1.bam -O H3k27ac.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H3k27me3StdAlnRep1.bam -O H3k27me3.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H3k4me1StdAlnRep1.bam -O H3k4me1.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H3k4me2StdAlnRep1.bam -O H3k4me2.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H3k4me3StdAlnRep1.bam -O H3k4me3.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H3k9me1StdAlnRep1.bam -O H3k9me1.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H3k9me3StdAlnRep1.bam -O H3k9me3.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H4k20me1StdAlnRep1.bam -O H4k20me1.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562H3k79me2StdAlnRep1.bam -O H3k79me2.bam
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneK562ControlStdAlnRep1.bam -O control.bam
+!java -mx5000M -jar /content/ChromHMM/ChromHMM.jar BinarizeBam -b 200  /content/ChromHMM/CHROMSIZES/hg19.txt /content/ cellmarkfiletable.txt   binarizedData
+!java -mx5000M -jar /content/ChromHMM/ChromHMM.jar LearnModel /content/binarizedData output 10 hg19
+!zip -r output.zip output
+from google.colab import files
+files.download("output.zip")
+```
 
+## [Бонусная часть](https://colab.research.google.com/drive/1GG26xYsxCLUwMHKiCrev3_xQ3FKfb9tF?usp=sharing)
+
+```
+names = ['Transcribed','Transcriptional_elongation', 'Heterochromatin', 'Inactive_promoter', 'Promoter', 'Enhancer', 'Insulator', 'Active_promoter', 'Insulator', 'Inactive_promoter']
+with open(f'K562_10_expanded.bed', 'r') as r:
+    with open(f'K562_10_expanded_new2.bed', 'a') as w:
+        for line in r.readlines():
+            if 'track' in line or 'browser' in line :
+                w.write(line)
+            else:
+                spli = line.split('\t')
+                spli[3] = names[int(spli[3])-1]
+                w.write('\t'.join(spli))
+```
+![Снимок экрана 2022-03-28 в 00 44 34](https://user-images.githubusercontent.com/32986053/160302534-4d55868a-e01a-4c6c-b2fc-a54b92994941.png)
+![Снимок экрана 2022-03-28 в 00 47 58](https://user-images.githubusercontent.com/32986053/160302541-d167f21f-e84a-4631-93ae-0a19f95ea834.png)
